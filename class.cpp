@@ -1,0 +1,41 @@
+#include "class.hpp"
+#include <cmath>
+/**
+ * @brief конструктор, инициализирующий точку заданными координатами
+ * @param z координата z
+ * @param z координата z
+ * @param z координата z
+ */
+Point3D::Point3D(double x, double y, double z)
+    : x(x), y(y), z(z)
+{
+}
+/**
+ * @brief конструктор копирования
+ * @param other другой объект Point3D, значения координат которого копируются
+ */
+Point3D::Point3D(const Point3D& other)
+    : x(other.x), y(other.y), z(other.z)
+{
+}
+/**
+ * @brief конструктор перемещения
+ * @param other временный объект Point3D, из которого заимствуются координаты
+ */
+Point3D::Point3D(Point3D&& other) noexcept
+    : x(other.x), y(other.y), z(other.z)
+{
+}
+
+double Point3D::getX() const { return x; }
+double Point3D::getY() const { return y; }
+double Point3D::getZ() const { return z; }
+/**
+ * @brief оператор вычитания двух точек
+ * @param other точка, вычитаемая из текущей
+ * @return новый объект Point3D, представляющий разность координат
+*/
+Point3D Point3D::operator-(const Point3D& other) const
+{
+    return Point3D(other.x -x, other.y-y, other.z - z);
+}
