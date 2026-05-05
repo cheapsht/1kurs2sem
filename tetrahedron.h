@@ -9,7 +9,7 @@
 class Tetrahedron
 {
 private:
-    Point3D A, B, C, D;
+    Point3D double A,B,C,D;
 
 public:
     /**
@@ -19,8 +19,8 @@ public:
      * @param c точка C (по умолчанию в начале координат)
      * @param d точка D (по умолчанию в начале координат)
      */
-    Tetrahedron(const Point3D& a = Point3D(), const Point3D& b = Point3D(),
-                const Point3D& c = Point3D(), const Point3D& d = Point3D());
+    Tetrahedron(const double Point3D& a = Point3D(), const double Point3D& b = Point3D(),
+                const double  Point3D& c = Point3D(), const double Point3D& d = Point3D());
 
     /**
      * @brief Копирующий конструктор
