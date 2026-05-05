@@ -1,4 +1,4 @@
-#include "class.h"
+#include "point.h"
 #include <cmath>
 /**
  * @brief конструктор, инициализирующий точку заданными координатами
