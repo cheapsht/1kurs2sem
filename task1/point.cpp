@@ -6,7 +6,7 @@
  * @param y координата y
  * @param z координата z
  */
-Point3D::Point3D(double x, double y, double z)
+Point3D::Point3D(double const x,const  double y, const double z)
     : x(x), y(y), z(z)
 {
 }
