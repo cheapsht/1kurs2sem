@@ -9,8 +9,8 @@
  * @param c точка C
  * @param d точка D
  */
-Tetrahedron::Tetrahedron(const Point3D& a, const Point3D& b,
-                         const Point3D& c, const Point3D& d)
+Tetrahedron::Tetrahedron(const double  Point3D& a, const double Point3D& b,
+                         const double Point3D& c, const double Point3D& d)
     : A(a), B(b), C(c), D(d)
 {
 }
