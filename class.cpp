@@ -1,9 +1,9 @@
-#include "class.hpp"
+#include "class.h"
 #include <cmath>
 /**
  * @brief конструктор, инициализирующий точку заданными координатами
- * @param z координата z
- * @param z координата z
+ * @param x координата x
+ * @param y координата y
  * @param z координата z
  */
 Point3D::Point3D(double x, double y, double z)
@@ -38,4 +38,11 @@ double Point3D::getZ() const { return z; }
 Point3D Point3D::operator-(const Point3D& other) const
 {
     return Point3D(other.x -x, other.y-y, other.z - z);
+}
+double Point3D::distance(const Point3D& A, const Point3D& B)
+{
+    Point3D vec = A - B;
+    return sqrt(vec.getX() * vec.getX() +
+                vec.getY() * vec.getY() +
+                vec.getZ() * vec.getZ());
 }
