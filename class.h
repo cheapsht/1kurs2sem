@@ -55,3 +55,10 @@ double getZ() const;
 */
 Point3D operator-(const Point3D& other) const;
 };
+/**
+* @brief вычисляет расстояние между двумя точками в трёхмерном пространстве
+* @param A первая точка
+* @param B вторая точка
+* @return расстояние между точками A и B
+*/
+static double distance(const Point3D& A, const Point3D& B);
