@@ -8,7 +8,7 @@ namespace graphics {
         double y;
 
         /** @brief Конструктор точки. */
-        Point(double x = 0.0, double y = 0.0);
+        Point(double const  x = 0.0, double const  y = 0.0);
     };
 
     /** @brief Оператор вывода точки в поток. */
