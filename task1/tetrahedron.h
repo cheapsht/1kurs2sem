@@ -1,5 +1,5 @@
 #pragma once
-#include "class.h"
+#include "point.h"
 
 /**
  * @class Tetrahedron
