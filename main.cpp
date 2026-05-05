@@ -16,7 +16,10 @@ double distance(const Point3D& A, const Point3D& B);
  * @return площадь равностороннего треугольника
  */
 double equilateralTriangleArea(double side);
-
+/**
+* @brief точка входа в программу
+* @return 0, если программа выполнена успешно
+*/
 int main()
 {
     /*координаты точек правильного тетраедара,ребра равны 2*(2^0,5) */
