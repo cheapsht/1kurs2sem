@@ -9,6 +9,9 @@
 class Tetrahedron
 {
 private:
+    /**
+    *@brief A,B,C,D - точки тетраэдра
+    */
     Point3D double A,B,C,D;
 
 public:
