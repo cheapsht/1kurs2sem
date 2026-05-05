@@ -22,7 +22,7 @@ public:
 * @param y Координата Y (по умолчанию 0)
 * @param z Координата Z (по умолчанию 0)
 */
-Point3D(double const  x = 0, double const  y = 0, double const z = 0);
+Point3D(double x = 0, double y = 0, double z = 0);
 /**
 * @brief копирующий конструктор
 * @param other другая точка, которую копируем
@@ -49,16 +49,28 @@ double getY() const;
 */
 double getZ() const;
 /**
+* @brief копирующий оператор присваивания
+* @param other другая точка, которую копируем
+* @return ссылка на текущий объект
+*/
+Point3D& operator=(const Point3D& other);
+/**
+* @brief перемещающий оператор присваивания
+* @param other временная точка
+* @return ссылка на текущий объект
+*/
+Point3D& operator=(Point3D&& other) noexcept;
+/**
 * @brief возвращает вектор от текущей точки к `other` (this → other).
 * @param otherк коонечная точка вектора
 * @return вектор между точками
 */
 Point3D operator-(const Point3D& other) const;
-};
 /**
-* @brief вычисляет расстояние между двумя точками в трёхмерном пространстве
+* @brief вычисляет евклидово расстояние между двумя точками в трёхмерном пространстве
 * @param A первая точка
 * @param B вторая точка
 * @return расстояние между точками A и B
 */
 static double distance(const Point3D& A, const Point3D& B);
+};
