@@ -1,30 +1,16 @@
 #include <iostream>
-#include <cmath>
-#include "class.hpp"
+#include "class.h"
+#include "tetrahedron.h"
 
-using namespace std;
-/**
-* @brief точка входа в программу
-* @return 0, если программа выполнена успешно
-*/
-int main()
-{
-    /*координаты точек правильного тетраедара,ребра равны 2*(2^0,5) */
-    Point3D A(1,  1,  1);
-    Point3D B(1, -1, -1);
-    Point3D C(-1,  1, -1);
-    Point3D D(-1, -1,  1);
+int main() {
+    Point3D A(1.0, 1.0, 1.0);
+    Point3D B(1.0, -1.0, -1.0);
+    Point3D C(-1.0, 1.0, -1.0);
+    Point3D D(-1.0, -1.0, 1.0);
 
-    cout << "Точки правильного тетраэдра:" << endl;
-    cout << "A: (" << A.getX() << ", " << A.getY() << ", " << A.getZ() << ")" << endl;
-    cout << "B: (" << B.getX() << ", " << B.getY() << ", " << B.getZ() << ")" << endl;
-    cout << "C: (" << C.getX() << ", " << C.getY() << ", " << C.getZ() << ")" << endl;
-    cout << "D: (" << D.getX() << ", " << D.getY() << ", " << D.getZ() << ")" << endl;
-    double side = distance(A, B);
-    double area = equilateralTriangleArea(side);
+    Tetrahedron t(A, B, C, D);
 
-    cout << "Длина ребра основания: " << side << endl;
-    cout << "Площадь основания тетраэдра : " << area << endl;
+    std::cout << "Площадь основания: " << t.getBaseArea() << std::endl;
 
     return 0;
 }
