@@ -3,7 +3,10 @@
 #include <vector>
 #include <memory>
 #include "Text.h"
-
+/**
+* @brief точка входа в программу
+* @return 0, если программа выполнена успешно
+*/
 int main() {
     try {
         std::vector<std::unique_ptr<graphics::Figure>> figures;
