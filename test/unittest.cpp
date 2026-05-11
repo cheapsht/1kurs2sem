@@ -1,7 +1,8 @@
-#include "../Library/Text.h"
-#include "../Library/Point.h"
-#include "../Library/Color.h"
-#include "../Library/Font.h"
+#include "../include/text.h"
+#include "../include/point.h"
+#include "../include/Color.h"
+#include "../include/font.h"
+#include "../include/figure.h"
 #include "CppUnitTest.h"
 #include <sstream>
 #include <cmath>
