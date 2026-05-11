@@ -1,4 +1,4 @@
-#include "Font.h"
+#include "font.h"
 #include <sstream>
 
 namespace graphics {
@@ -34,8 +34,13 @@ std::istream& operator>>(std::istream& is, Font& f) {
     std::string name;
     Color color;
     int size;
-    
-    is >> name >> color >> size;
+
+    is >> name;
+    is >> color;
+    is >> size;
+    if (size <= 0) {
+        throw std::invalid_argument("Font size must be positive");
+    }
     f = Font(name, color, size);
     return is;
 }
