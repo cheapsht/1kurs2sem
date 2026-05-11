@@ -1,4 +1,3 @@
-#include "Text.h"
 #include <sstream>
 #include <stdexcept>
 
@@ -22,15 +21,17 @@ namespace graphics {
 
     void Text::read(std::istream& is) {
         std::string keyword, pipe;
-        is >> keyword >> pipe; // Text: |
-        is >> bottom_left >> pipe; // (x,y) |
-        is >> keyword; // Font:
-        is >> font;
-        is >> pipe >> keyword; // | Message:
+        is >> keyword; 
+        is >> bottom_left; 
+        is >> pipe; 
+        is >> keyword; 
+        is >> font; 
+        is >> pipe; \
+        is >> keyword;
         is >> std::ws;
         char quote;
-        is >> quote;
-        std::getline(is, message, '"');
+        is >> quote; 
+        std::getline(is, message, '"'); 
         validate();
     }
 
