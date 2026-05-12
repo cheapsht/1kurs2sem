@@ -18,7 +18,7 @@ void Font::setName(const std::string& newName) { name = newName; }
 
 void Font::setColor(const Color& newColor) { color = newColor; }
 
-void Font::setSize(int newSize) {
+void Font::setSize(const int newSize) {
     if (newSize <= 0) {
         throw std::invalid_argument("Font size must be positive");
     }
