@@ -17,7 +17,7 @@ void Vector::copyFrom(const Vector& other) {
 
 Vector::Vector() : data_(nullptr), size_(0) {}
 
-Vector::Vector(std::initializer_list<int> init) : data_(nullptr), size_(0) {
+Vector::Vector(const std::initializer_list<int> init) : data_(nullptr), size_(0) {
     if (!init.empty()) {
         size_ = init.size();
         data_ = new int[size_];
@@ -72,8 +72,7 @@ const int& Vector::operator[](const size_t index) const {
     return data_[index];
 }
 
-void Vector::pushBack(int value) {
-    // Выделяем память ровно под size_ + 1 элемент
+void Vector::pushBack(const int value) {
     int* newData = new int[size_ + 1];
     if (data_ && size_ > 0) {
         std::copy(data_, data_ + size_, newData);
@@ -84,7 +83,7 @@ void Vector::pushBack(int value) {
     ++size_;
 }
 
-bool Vector::removeAt(size_t index) {
+bool Vector::removeAt(const size_t index) {
     if (index >= size_) return false;
     
     // Сдвигаем элементы влево
@@ -106,12 +105,12 @@ bool Vector::removeAt(size_t index) {
     return true;
 }
 
-bool Vector::remove(int value) {
+bool Vector::remove(const int value) {
     int idx = indexOf(value);
     return (idx == -1) ? false : removeAt(static_cast<size_t>(idx));
 }
 
-int Vector::indexOf(int value) const {
+int Vector::indexOf(const int value) const {
     for (size_t i = 0; i < size_; ++i) {
         if (data_[i] == value) return static_cast<int>(i);
     }
