@@ -23,7 +23,7 @@ namespace graphics {
 
         void setName(const std::string& name);
         void setColor(const Color& color);
-        void setSize(int size);
+        void setSize(const int size);
 
         friend std::ostream& operator<<(std::ostream& os, const Font& f);
         friend std::istream& operator>>(std::istream& is, Font& f);
