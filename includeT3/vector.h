@@ -83,7 +83,7 @@ public:
      * @param index индекс элемента
      * @return константная ссылка на элемент
      */
-    const int& operator[](size_t index) const;
+    const int& operator[](const size_t index) const;
 
     /**
      * @brief Добавление элемента в конец
