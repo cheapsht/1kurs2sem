@@ -17,4 +17,5 @@ namespace graphics {
     std::istream& operator>>(std::istream& is, Point& p);
     /** @brief Оператор сравнения точек на равенство. */
     bool operator==(const Point& lhs, const Point& rhs);
+    bool operator!=(const Point& lhs, const Point& rhs);
 }
