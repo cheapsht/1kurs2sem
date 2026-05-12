@@ -14,13 +14,6 @@ class Vector {
 private:
     int* data_;
     size_t size_;
-    size_t capacity_;
-
-    /**
-     * @brief Выделяет новую память и копирует данные
-     * @param newCapacity новая ёмкость
-     */
-    void reserve(const size_t newCapacity);
 
     /**
      * @brief Копирует данные из другого вектора
