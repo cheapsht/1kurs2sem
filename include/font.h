@@ -1,5 +1,3 @@
-Lines changed: 31 additions & 0 deletions
-Original file line number	Original file line	Diff line number	Diff line change
 #pragma once
 #include <string>
 #include <iostream>
