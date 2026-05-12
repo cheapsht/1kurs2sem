@@ -5,48 +5,34 @@
 
 namespace containers {
 
-void Vector::reserve(size_t newCapacity) {
-    if (newCapacity <= capacity_) return;
-    int* newData = new int[newCapacity];
-    if (data_ && size_ > 0) {
-        std::copy(data_, data_ + size_, newData);
-    }
-    delete[] data_;
-    data_ = newData;
-    capacity_ = newCapacity;
-}
-
 void Vector::copyFrom(const Vector& other) {
-    if (other.size_ > 0) {
-        data_ = new int[other.capacity_];
-        std::copy(other.data_, other.data_ + other.size_, data_);
-    }
     size_ = other.size_;
-    capacity_ = other.capacity_;
-}
-
-Vector::Vector() 
-    : data_(nullptr), size_(0), capacity_(0) {}
-
-Vector::Vector(std::initializer_list<int> init) 
-    : data_(nullptr), size_(0), capacity_(init.size()) {
-    if (capacity_ > 0) {
-        data_ = new int[capacity_];
-        std::copy(init.begin(), init.end(), data_);
-        size_ = init.size();
+    if (size_ > 0) {
+        data_ = new int[size_];
+        std::copy(other.data_, other.data_ + size_, data_);
+    } else {
+        data_ = nullptr;
     }
 }
 
-Vector::Vector(const Vector& other) 
-    : data_(nullptr), size_(0), capacity_(0) {
+Vector::Vector() : data_(nullptr), size_(0) {}
+
+Vector::Vector(std::initializer_list<int> init) : data_(nullptr), size_(0) {
+    if (!init.empty()) {
+        size_ = init.size();
+        data_ = new int[size_];
+        std::copy(init.begin(), init.end(), data_);
+    }
+}
+
+Vector::Vector(const Vector& other) : data_(nullptr), size_(0) {
     copyFrom(other);
 }
 
 Vector::Vector(Vector&& other) noexcept 
-    : data_(other.data_), size_(other.size_), capacity_(other.capacity_) {
+    : data_(other.data_), size_(other.size_) {
     other.data_ = nullptr;
     other.size_ = 0;
-    other.capacity_ = 0;
 }
 
 Vector::~Vector() {
@@ -66,22 +52,20 @@ Vector& Vector::operator=(Vector&& other) noexcept {
         delete[] data_;
         data_ = other.data_;
         size_ = other.size_;
-        capacity_ = other.capacity_;
         other.data_ = nullptr;
         other.size_ = 0;
-        other.capacity_ = 0;
     }
     return *this;
 }
 
-int& Vector::operator[](size_t index) {
+int& Vector::operator[](const size_t index) {
     if (index >= size_) {
         throw std::out_of_range("Индекс выходит за пределы вектора");
     }
     return data_[index];
 }
 
-const int& Vector::operator[](size_t index) const {
+const int& Vector::operator[](const size_t index) const {
     if (index >= size_) {
         throw std::out_of_range("Индекс выходит за пределы вектора");
     }
@@ -89,18 +73,36 @@ const int& Vector::operator[](size_t index) const {
 }
 
 void Vector::pushBack(int value) {
-    if (size_ >= capacity_) {
-        reserve(capacity_ == 0 ? 1 : capacity_ * 2);
+    // Выделяем память ровно под size_ + 1 элемент
+    int* newData = new int[size_ + 1];
+    if (data_ && size_ > 0) {
+        std::copy(data_, data_ + size_, newData);
     }
-    data_[size_++] = value;
+    newData[size_] = value;
+    delete[] data_;
+    data_ = newData;
+    ++size_;
 }
 
 bool Vector::removeAt(size_t index) {
     if (index >= size_) return false;
+    
+    // Сдвигаем элементы влево
     for (size_t i = index; i < size_ - 1; ++i) {
         data_[i] = data_[i + 1];
     }
     --size_;
+    
+    // Строго освобождаем лишнюю память, оставляя только size_ элементов
+    if (size_ == 0) {
+        delete[] data_;
+        data_ = nullptr;
+    } else {
+        int* newData = new int[size_];
+        std::copy(data_, data_ + size_, newData);
+        delete[] data_;
+        data_ = newData;
+    }
     return true;
 }
 
@@ -134,7 +136,6 @@ void Vector::clear() {
     delete[] data_;
     data_ = nullptr;
     size_ = 0;
-    capacity_ = 0;
 }
 
 std::ostream& operator<<(std::ostream& os, const Vector& vec) {
