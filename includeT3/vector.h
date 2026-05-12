@@ -20,7 +20,7 @@ private:
      * @brief Выделяет новую память и копирует данные
      * @param newCapacity новая ёмкость
      */
-    void reserve(size_t newCapacity);
+    void reserve(const size_t newCapacity);
 
     /**
      * @brief Копирует данные из другого вектора
@@ -38,7 +38,7 @@ public:
      * @brief Конструктор со списком инициализации
      * @param init список инициализации
      */
-    Vector(std::initializer_list<int> init);
+    Vector(const std::initializer_list<int> init);
 
     /**
      * @brief Конструктор копирования
@@ -76,7 +76,7 @@ public:
      * @param index индекс элемента
      * @return ссылка на элемент
      */
-    int& operator[](size_t index);
+    int& operator[](const size_t index);
 
     /**
      * @brief Доступ по индексу (константный)
@@ -89,28 +89,28 @@ public:
      * @brief Добавление элемента в конец
      * @param value значение элемента
      */
-    void pushBack(int value);
+    void pushBack(const int value);
 
     /**
      * @brief Удаление элемента по индексу
      * @param index позиция элемента
      * @return true, если элемент удалён
      */
-    bool removeAt(size_t index);
+    bool removeAt(const size_t index);
 
     /**
      * @brief Удаление первого вхождения значения
      * @param value значение для удаления
      * @return true, если элемент найден и удалён
      */
-    bool remove(int value);
+    bool remove(const int value);
 
     /**
      * @brief Поиск элемента по значению
      * @param value значение для поиска
      * @return индекс элемента или -1, если не найден
      */
-    int indexOf(int value) const;
+    int indexOf(const int value) const;
 
     /**
      * @brief Проверка, пуст ли вектор
