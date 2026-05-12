@@ -22,8 +22,11 @@ std::istream& operator>>(std::istream& is, Point& p) {
 }
 
 bool operator==(const Point& lhs, const Point& rhs) {
-    constexpr double EPS = 1e-9;
-    return std::abs(lhs.x - rhs.x) < EPS && std::abs(lhs.y - rhs.y) < EPS;
+    return std::abs(lhs.x - rhs.x) < std::numeric_limits<double>::epsilon() && 
+           std::abs(lhs.y - rhs.y) < std::numeric_limits<double>::epsilon();
 }
+}
+bool operator!=(const Point& lhs, const Point& rhs) {
+    return !(lhs == rhs);
 
 }
