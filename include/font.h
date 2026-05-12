@@ -15,7 +15,7 @@ namespace graphics {
          * @brief Конструктор шрифта.
          * @throws std::invalid_argument Если размер <= 0.
          */
-        Font(const std::string& name = "Arial", const Color& color = Color(), int size = 12);
+        Font(const std::string& name = "Arial", const Color& color = Color(),const  int size = 12);
 
         const std::string& getName() const;
         const Color& getColor() const;
