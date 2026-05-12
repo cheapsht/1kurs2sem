@@ -8,12 +8,12 @@ namespace graphics {
     class Color {
     private:
         uint8_t r, g, b;
-        void validate(int r, int g, int b) const;
+        void validate(const int r, const int g, const int b) const;
     public:
         /**
          * @brief Конструктор цвета.
          */
-        Color(int r = 0, int g = 0, int b = 0);
+        Color(const int r = 0, const int g = 0,const int b = 0);
 
         uint8_t getR() const;
         uint8_t getG() const;
